@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './components/App';
-import todoApp from './actions/reducers';
+import todoApp from './reducers';
 
 let store = createStore(todoApp);
 
