@@ -1,1 +1,1 @@
-#  学习React的Demo
+# 基于React + Redux 的TODO Demo
