@@ -6,9 +6,11 @@ import App from './components/App';
 import todoApp from './reducers';
 
 let store = createStore(todoApp);
-
+console.log(store.getState());
 let app = document.getElementById('app');
 ReactDOM.render(
-    <App  store={store} />,
+	<Provider store={store}  >
+		<App  />
+	</Provider>,
     app
 );

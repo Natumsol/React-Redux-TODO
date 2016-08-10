@@ -3,7 +3,7 @@
  */
 
 export const ADD_TODO = 'ADD_TODO';
-export const COMPLETE_TODO = 'COMPLETE_TODO';
+export const TOGGLE_TODO = 'TOGGLE_TODO';
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 
 /*
@@ -24,8 +24,8 @@ export function addTodo(text) {
     return { type: ADD_TODO, text };
 }
 
-export function completeTodo(index) {
-    return { type: COMPLETE_TODO, index };
+export function toggleTodo(index) {
+    return { type: TOGGLE_TODO, index };
 }
 
 export function setVisibilityFilter(filter) {

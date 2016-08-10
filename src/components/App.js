@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addTodo, completeTodo, setVisibilityFilter, VisibilityFilters } from '../actions';
+import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters } from '../actions';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 import Footer from './Footer';
@@ -8,17 +8,20 @@ import Footer from './Footer';
 class App extends Component {
     render() {
         // Injected by connect() call:
-        const { dispatch, visibleTodos, visibilityFilter } = this.props;
+        const { dispatch, visibleTodos, visibilityFilter} = this.props;
+        const {store} = this.context;
         return (
             <div>
                 <AddTodo
-                    onAddClick={text =>
-                        dispatch(addTodo(text))
+                    onAddClick={text => {
+                            dispatch(addTodo(text))
+                            console.log(store);
+                        }
                     } />
                 <TodoList
                     todos={this.props.visibleTodos}
                     onTodoClick={index =>
-                        dispatch(completeTodo(index))
+                        dispatch(toggleTodo(index))
                     } />
                 <Footer
                     filter={visibilityFilter}
@@ -40,6 +43,10 @@ App.propTypes = {
         'SHOW_COMPLETED',
         'SHOW_ACTIVE'
     ]).isRequired
+};
+
+App.contextTypes = {
+    store: PropTypes.object
 };
 
 function selectTodos(todos, filter) {
